@@ -1,36 +1,6 @@
-```html
 <!DOCTYPE html>
 <html lang="ar" dir="rtl">
 <head>
-    <style>
-  .special-duo {
-    text-align: center;
-    background-color: #f8f8f8;
-    padding: 20px;
-    border-radius: 15px;
-    max-width: 600px;
-    margin: auto;
-    box-shadow: 0 0 10px rgba(0,0,0,0.1);
-  }
-
-  .special-duo img {
-    max-width: 100%;
-    height: auto;
-    border-radius: 10px;
-    margin-top: 15px;
-  }
-
-  .special-duo h3 {
-    color: #222;
-    font-size: 24px;
-  }
-
-  .special-duo p {
-    color: #555;
-    font-size: 18px;
-    margin-top: 10px;
-  }
-</style>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>أساطير كرة القدم</title>
@@ -94,7 +64,7 @@
             justify-content: center;
             background-color: #2c3e50;
             padding: 15px 0;
-            margin-bottom: 30px;
+            margin-bottom: 0; /* Adjusted for home section */
             flex-wrap: wrap;
         }
         .main-menu a {
@@ -114,23 +84,29 @@
             margin-left: 8px;
         }
         
-        .hero-section {
+        .hero-section-custom { /* Renamed to avoid conflict if hero-section class is reused with different styles */
             display: flex;
             flex-direction: column;
             align-items: center;
             justify-content: center;
-            padding: 50px 20px;
+            padding: 30px 20px;
             background: linear-gradient(135deg, #1a1a1a, #2c3e50);
             color: white;
             text-align: center;
-            margin-bottom: 30px;
+            margin-bottom: 30px; /* Add some space below */
         }
-        .hero-section h2 {
-            font-size: 3em;
-            margin-bottom: 20px;
+        .hero-section-custom h2 {
+            font-size: 2.5em; /* Adjusted from original hero-section */
+            margin-bottom: 15px; /* Adjusted */
             text-shadow: 2px 2px 4px rgba(0,0,0,0.5);
         }
-        .hero-image {
+         .hero-section-custom p {
+            font-size: 1.2em;
+            max-width: 800px;
+            margin: 0 auto 20px;
+            line-height: 1.6;
+        }
+        .hero-image { /* This class was in the original hero section, ensure it's styled if used */
             max-width: 800px;
             margin-top: 30px;
         }
@@ -200,22 +176,24 @@
         }
         
         .player-details {
-            display: none;
+            display: none; /* Initially hidden */
             padding: 30px;
             margin: 20px auto;
             background-color: white;
             border-radius: 10px;
             box-shadow: 0 2px 10px rgba(0,0,0,0.1);
             max-width: 900px;
-            flex-wrap: wrap;
+            flex-wrap: wrap; /* Ensures content wraps on smaller screens */
+            align-items: flex-start; /* Align items to the top */
         }
-        .player-details.active {
+        .player-details.active { /* This class might not be needed if display is handled by direct style */
             display: flex;
         }
         .player-details-image {
             flex: 1;
-            min-width: 300px;
+            min-width: 250px; /* Adjusted min-width */
             text-align: center;
+            padding-right: 20px; /* Add some space between image and info */
         }
         .player-details-image img {
             max-width: 100%;
@@ -225,7 +203,7 @@
         .player-details-info {
             flex: 2;
             min-width: 300px;
-            padding: 0 20px;
+            /* padding: 0 20px; Removed padding to avoid double padding if image is on left */
         }
         .player-details-info h2 {
             color: #2c3e50;
@@ -353,20 +331,32 @@
         
         /* قسم الصورة الخاصة بميسي ورونالدو */
         .special-duo {
-            max-width: 800px;
-            margin: 40px auto;
             text-align: center;
-        }
-        .special-duo h3 {
-            color: #2c3e50;
-            margin-bottom: 20px;
+            background-color: #f8f8f8; /* Original style, keep if used in gallery */
+            padding: 20px;
+            border-radius: 15px;
+            max-width: 600px; /* Original style */
+            margin: 20px auto; /* Adjusted margin */
+            box-shadow: 0 0 10px rgba(0,0,0,0.1);
         }
         .special-duo img {
-            width: 100%;
+            max-width: 100%;
+            height: auto;
             border-radius: 10px;
-            box-shadow: 0 5px 15px rgba(0,0,0,0.2);
+            margin-top: 15px;
         }
-        
+        .special-duo h3 {
+            color: #2c3e50; /* Adjusted for consistency */
+            font-size: 24px;
+            margin-bottom: 10px; /* Adjusted */
+        }
+        .special-duo p {
+            color: #555;
+            font-size: 18px;
+            margin-top: 10px;
+        }
+
+        /* Responsive adjustments */
         @media (max-width: 768px) {
             .main-menu {
                 flex-wrap: wrap;
@@ -376,17 +366,18 @@
                 padding: 8px 12px;
                 font-size: 16px;
             }
-            .hero-section h2 {
+            .hero-section-custom h2, .section-title { /* Combined hero title and section title */
                 font-size: 2em;
-            }
-            .section-title {
-                font-size: 1.8em;
             }
             .player-details {
                 flex-direction: column;
             }
+            .player-details-image {
+                 padding-right: 0; /* Remove padding when stacked */
+                 margin-bottom: 20px; /* Add space below image when stacked */
+            }
             .player-details-info {
-                padding: 20px 0 0 0;
+                padding: 0; /* Reset padding */
             }
         }
         @media (max-width: 576px) {
@@ -396,24 +387,23 @@
             .contact-card {
                 width: 100%;
             }
+            .loading-screen h1 { font-size: 2.2em; }
+            .loading-screen p { font-size: 1.2em; }
         }
     </style>
 </head>
 <body>
-      <!-- شاشة التحميل -->
-    <div class="loading-screen">
+      <div class="loading-screen">
         <h1>أساطير كرة القدم</h1>
         <p>جاري تحميل المحتوى...</p>
         <div class="spinner"></div>
     </div>
 
-    <!-- المحتوى الرئيسي -->
     <div class="main-content" style="display: none;">
         <header>
             <h1>أساطير كرة القدم</h1>
         </header>
         
-        <!-- القائمة الرئيسية -->
         <nav class="main-menu">
             <a href="#home"><i class="fas fa-home"></i> الرئيسية</a>
             <a href="#players-gallery"><i class="fas fa-images"></i> معرض اللاعبين</a>
@@ -421,113 +411,112 @@
             <a href="#contact"><i class="fas fa-envelope"></i> تواصل معنا</a>
         </nav>
         
-        <!-- الصفحة الرئيسية -->
-         <section>
-          <div class="special-duo">
-            <h3>أعظم منافسة في تاريخ كرة القدم</h3>
-            <img src="duo.jpg" alt="صورة من جهازي">
-            <p>ليونيل ميسي وكريستيانو رونالدو - سيطرا على عالم كرة القدم لأكثر من 15 عاماً</p>
-          </div>
+        <section id="home" class="page-section">
+            <div class="hero-section-custom">
+                <h2>مرحبًا بكم في عالم أساطير كرة القدم!</h2>
+                <p>
+                    مرحبًا بكم في منصتكم الأولى لاكتشاف نجوم كرة القدم!
+                    في هذا الموقع، نأخذكم في رحلة شيقة داخل عالم الساحرة المستديرة، حيث نسلّط الضوء على أبرز نجوم كرة القدم العالميين، ونحتفي بالمواهب الصاعدة التي تشقّ طريقها نحو القمة. ستجدون ملفات شخصية مميزة، إحصائيات دقيقة، وأخبارًا حصرية عن اللاعبين الذين يصنعون الفارق داخل المستطيل الأخضر. استمتعوا بتجربة تصفّح أنيقة ومحتوى غني يلبي شغف عشاق الكرة من كل مكان.
+                </p>
+                <div class="special-duo" style="background-color: transparent; box-shadow: none; padding: 0; max-width: 700px;">
+                     <img src="https://via.placeholder.com/800x400.png?text=Messi+and+Ronaldo" alt="ليونيل ميسي وكريستيانو رونالدو" loading="lazy">
+                </div>
+            </div>
         </section>
         
-        <!-- معرض صور اللاعبين -->
-        <section id="players-gallery" style="display: none;">
+        <section id="players-gallery" class="page-section" style="display: none;">
             <h2 class="section-title">معرض صور اللاعبين</h2>
+            <div style="text-align: center; margin-bottom: 30px; padding: 0 20px;">
+                <input type="text" id="playerSearchInput" placeholder="ابحث عن لاعب بالاسم..." style="padding: 12px; width: 100%; max-width: 500px; border-radius: 5px; border: 1px solid #ccc; font-size: 16px;">
+            </div>
             <div class="players-grid">
-                <!-- الأساطير الكبار -->
                 <div class="player-card" data-player="zidane">
-                    <img src="https://upload.wikimedia.org/wikipedia/commons/thumb/b/b4/Zinedine_Zidane_by_Tasnim_03.jpg/800px-Zinedine_Zidane_by_Tasnim_03.jpg" alt="زين الدين زيدان">
+                    <img src="https://upload.wikimedia.org/wikipedia/commons/thumb/b/b4/Zinedine_Zidane_by_Tasnim_03.jpg/800px-Zinedine_Zidane_by_Tasnim_03.jpg" alt="زين الدين زيدان" loading="lazy">
                     <h3>زين الدين زيدان</h3>
                 </div>
                 <div class="player-card" data-player="messi">
-                    <img src="https://upload.wikimedia.org/wikipedia/commons/thumb/b/b4/Lionel-Messi-Argentina-2022-FIFA-World-Cup_%28cropped%29.jpg/800px-Lionel-Messi-Argentina-2022-FIFA-World-Cup_%28cropped%29.jpg" alt="ليونيل ميسي">
+                    <img src="https://upload.wikimedia.org/wikipedia/commons/thumb/b/b4/Lionel-Messi-Argentina-2022-FIFA-World-Cup_%28cropped%29.jpg/800px-Lionel-Messi-Argentina-2022-FIFA-World-Cup_%28cropped%29.jpg" alt="ليونيل ميسي" loading="lazy">
                     <h3>ليونيل ميسي</h3>
                 </div>
                 <div class="player-card" data-player="ronaldo">
-                    <img src="https://upload.wikimedia.org/wikipedia/commons/thumb/8/8c/Cristiano_Ronaldo_2018.jpg/800px-Cristiano_Ronaldo_2018.jpg" alt="كريستيانو رونالدو">
+                    <img src="https://upload.wikimedia.org/wikipedia/commons/thumb/8/8c/Cristiano_Ronaldo_2018.jpg/800px-Cristiano_Ronaldo_2018.jpg" alt="كريستيانو رونالدو" loading="lazy">
                     <h3>كريستيانو رونالدو</h3>
                 </div>
                 <div class="player-card" data-player="pele">
-                    <img src="https://upload.wikimedia.org/wikipedia/commons/thumb/2/2e/Pele_%281970%29.jpg/800px-Pele_%281970%29.jpg" alt="بيليه">
+                    <img src="https://upload.wikimedia.org/wikipedia/commons/thumb/2/2e/Pele_%281970%29.jpg/800px-Pele_%281970%29.jpg" alt="بيليه" loading="lazy">
                     <h3>بيليه</h3>
-    </div>
+                </div>
                 <div class="player-card" data-player="maradona">
-                    <img src="https://upload.wikimedia.org/wikipedia/commons/thumb/2/2c/Maradona-Mundial_86_con_la_copa.JPG/800px-Maradona-Mundial_86_con_la_copa.JPG" alt="دييغو مارادونا">
+                    <img src="https://upload.wikimedia.org/wikipedia/commons/thumb/2/2c/Maradona-Mundial_86_con_la_copa.JPG/800px-Maradona-Mundial_86_con_la_copa.JPG" alt="دييغو مارادونا" loading="lazy">
                     <h3>دييغو مارادونا</h3>
                 </div>
                 
-                <!-- اللاعبون الحاليون -->
                 <div class="player-card" data-player="mbappe">
-                    <img src="https://upload.wikimedia.org/wikipedia/commons/thumb/5/57/Kylian_Mbapp%C3%A9_2018.jpg/800px-Kylian_Mbapp%C3%A9_2018.jpg" alt="كيليان مبابي">
+                    <img src="https://upload.wikimedia.org/wikipedia/commons/thumb/5/57/Kylian_Mbapp%C3%A9_2018.jpg/800px-Kylian_Mbapp%C3%A9_2018.jpg" alt="كيليان مبابي" loading="lazy">
                     <h3>كيليان مبابي</h3>
                 </div>
                 <div class="player-card" data-player="neymar">
-                    <img src="https://upload.wikimedia.org/wikipedia/commons/thumb/b/bb/Neymar_Jr._with_Al_Hilal%2C_3_October_2023_-_03_%28cropped%29.jpg/800px-Neymar_Jr._with_Al_Hilal%2C_3_October_2023_-_03_%28cropped%29.jpg" alt="نيمار">
+                    <img src="https://upload.wikimedia.org/wikipedia/commons/thumb/b/bb/Neymar_Jr._with_Al_Hilal%2C_3_October_2023_-_03_%28cropped%29.jpg/800px-Neymar_Jr._with_Al_Hilal%2C_3_October_2023_-_03_%28cropped%29.jpg" alt="نيمار" loading="lazy">
                     <h3>نيمار</h3>
                 </div>
                 <div class="player-card" data-player="modric">
-                    <img src="https://upload.wikimedia.org/wikipedia/commons/thumb/4/4f/Luka_Modric_%28cropped%29.jpg/800px-Luka_Modric_%28cropped%29.jpg" alt="لوكا مودريتش">
+                    <img src="https://upload.wikimedia.org/wikipedia/commons/thumb/4/4f/Luka_Modric_%28cropped%29.jpg/800px-Luka_Modric_%28cropped%29.jpg" alt="لوكا مودريتش" loading="lazy">
                     <h3>لوكا مودريتش</h3>
                 </div>
                 <div class="player-card" data-player="salah">
-                    <img src="https://upload.wikimedia.org/wikipedia/commons/thumb/7/7a/Mohamed_Salah_2018.jpg/800px-Mohamed_Salah_2018.jpg" alt="محمد صلاح">
+                    <img src="https://upload.wikimedia.org/wikipedia/commons/thumb/7/7a/Mohamed_Salah_2018.jpg/800px-Mohamed_Salah_2018.jpg" alt="محمد صلاح" loading="lazy">
                     <h3>محمد صلاح</h3>
                 </div>
                 <div class="player-card" data-player="haaland">
-                    <img src="https://upload.wikimedia.org/wikipedia/commons/thumb/0/0c/Erling_Haaland_2023_%28cropped%29.jpg/800px-Erling_Haaland_2023_%28cropped%29.jpg" alt="إرلينغ هالاند">
+                    <img src="https://upload.wikimedia.org/wikipedia/commons/thumb/0/0c/Erling_Haaland_2023_%28cropped%29.jpg/800px-Erling_Haaland_2023_%28cropped%29.jpg" alt="إرلينغ هالاند" loading="lazy">
                     <h3>إرلينغ هالاند</h3>
                 </div>
                 
-                <!-- المواهب الصاعدة -->
                 <div class="player-card" data-player="yamal">
-                    <img src="https://upload.wikimedia.org/wikipedia/commons/thumb/5/5a/Lamine_Yamal_2023.jpg/800px-Lamine_Yamal_2023.jpg" alt="لامين يامال">
+                    <img src="https://upload.wikimedia.org/wikipedia/commons/thumb/5/5a/Lamine_Yamal_2023.jpg/800px-Lamine_Yamal_2023.jpg" alt="لامين يامال" loading="lazy">
                     <h3>لامين يامال</h3>
                 </div>
                 <div class="player-card" data-player="bellingham">
-                    <img src="https://upload.wikimedia.org/wikipedia/commons/thumb/4/4a/Jude_Bellingham_2022.jpg/800px-Jude_Bellingham_2022.jpg" alt="جود بيلينغهام">
+                    <img src="https://upload.wikimedia.org/wikipedia/commons/thumb/4/4a/Jude_Bellingham_2022.jpg/800px-Jude_Bellingham_2022.jpg" alt="جود بيلينغهام" loading="lazy">
                     <h3>جود بيلينغهام</h3>
                 </div>
                 <div class="player-card" data-player="guler">
-                    <img src="https://upload.wikimedia.org/wikipedia/commons/thumb/1/1b/Arda_G%C3%BCler_T%C3%BCrkiye_2023.jpg/800px-Arda_G%C3%BCler_T%C3%BCrkiye_2023.jpg" alt="أردا غولر">
+                    <img src="https://upload.wikimedia.org/wikipedia/commons/thumb/1/1b/Arda_G%C3%BCler_T%C3%BCrkiye_2023.jpg/800px-Arda_G%C3%BCler_T%C3%BCrkiye_2023.jpg" alt="أردا غولر" loading="lazy">
                     <h3>أردا غولر</h3>
                 </div>
                 <div class="player-card" data-player="gavi">
-                    <img src="https://upload.wikimedia.org/wikipedia/commons/thumb/2/25/Gavi_2021.jpg/800px-Gavi_2021.jpg" alt="جافي">
+                    <img src="https://upload.wikimedia.org/wikipedia/commons/thumb/2/25/Gavi_2021.jpg/800px-Gavi_2021.jpg" alt="جافي" loading="lazy">
                     <h3>جافي</h3>
                 </div>
                 <div class="player-card" data-player="vinicius">
-                    <img src="https://upload.wikimedia.org/wikipedia/commons/thumb/6/68/Vinicius_Junior_2018.jpg/800px-Vinicius_Junior_2018.jpg" alt="فينيسيوس جونيور">
+                    <img src="https://upload.wikimedia.org/wikipedia/commons/thumb/6/68/Vinicius_Junior_2018.jpg/800px-Vinicius_Junior_2018.jpg" alt="فينيسيوس جونيور" loading="lazy">
                     <h3>فينيسيوس جونيور</h3>
                 </div>
             </div>
             
-            <!-- قسم خاص لميسي ورونالدو -->
             <div class="special-duo">
                 <h3>أعظم منافسة في تاريخ كرة القدم</h3>
-                <img src="duo.jpg" alt="صورة من جهازي">
+                <img src="https://via.placeholder.com/600x300.png?text=Messi+and+Ronaldo+Gallery" alt="صورة ميسي ورونالدو" loading="lazy">
                 <p>ليونيل ميسي وكريستيانو رونالدو - سيطرا على عالم كرة القدم لأكثر من 15 عاماً</p>
             </div>
         </section>
         
-        <!-- معلومات اللاعبين -->
-        <section id="players-info" style="display: none;">
+        <section id="players-info" class="page-section" style="display: none;">
             <h2 class="section-title">معلومات اللاعبين</h2>
             
-            <!-- زين الدين زيدان -->
             <div id="zidane-details" class="player-details">
                 <div class="player-details-image">
-                    <img src="https://upload.wikimedia.org/wikipedia/commons/thumb/b/b4/Zinedine_Zidane_by_Tasnim_03.jpg/800px-Zinedine_Zidane_by_Tasnim_03.jpg" alt="زين الدين زيدان">
+                    <img src="https://upload.wikimedia.org/wikipedia/commons/thumb/b/b4/Zinedine_Zidane_by_Tasnim_03.jpg/800px-Zinedine_Zidane_by_Tasnim_03.jpg" alt="زين الدين زيدان" loading="lazy">
                 </div>
                 <div class="player-details-info">
-                    <h2>زين الدين زيدان</h2>
+                  <h2>زين الدين زيدان</h2>
                     <p><strong>الجنسية:</strong> فرنسي</p>
                     <p><strong>تاريخ الميلاد:</strong> 23 يونيو 1972</p>
-                    <p><strong>مركز اللعب:</strong> وسط ميدان</p>
+                    <p><strong>مركز اللعب:</strong> وسط ميدان<ميدان</p>
                     <p><strong>أبرز الأندية:</strong> ريال مدريد، يوفنتوس، بوردو</p>
                     <div class="player-stats">
                         <p><strong>ألقاب مهمة:</strong> كأس العالم 1998، يورو 2000، دوري أبطال أوروبا (كلاعب ومدرب)</p>
                         <p><strong>جوائز فردية:</strong> الكرة الذهبية 1998، أفضل لاعب في العالم من الفيفا 3 مرات</p>
-                        <p><strong>عدد الأهداف:</strong> 156 هدفًا في 689 مباراة</p>
                     </div>
                     <a href="https://ar.wikipedia.org/wiki/زين_الدين_زيدان" class="wiki-link" target="_blank">
                         المزيد على ويكيبيديا <i class="fas fa-external-link-alt"></i>
@@ -535,10 +524,9 @@
                 </div>
             </div>
             
-            <!-- ليونيل ميسي -->
             <div id="messi-details" class="player-details">
                 <div class="player-details-image">
-                    <img src="https://upload.wikimedia.org/wikipedia/commons/thumb/b/b4/Lionel-Messi-Argentina-2022-FIFA-World-Cup_%28cropped%29.jpg/800px-Lionel-Messi-Argentina-2022-FIFA-World-Cup_%28cropped%29.jpg" alt="ليونيل ميسي">
+                    <img src="https://upload.wikimedia.org/wikipedia/commons/thumb/b/b4/Lionel-Messi-Argentina-2022-FIFA-World-Cup_%28cropped%29.jpg/800px-Lionel-Messi-Argentina-2022-FIFA-World-Cup_%28cropped%29.jpg" alt="ليونيل ميسي" loading="lazy">
                 </div>
                 <div class="player-details-info">
                     <h2>ليونيل ميسي</h2>
@@ -548,8 +536,7 @@
                     <p><strong>أبرز الأندية:</strong> برشلونة، باريس سان جيرمان، إنتر ميامي</p>
                     <div class="player-stats">
                         <p><strong>ألقاب حديثة:</strong> كأس العالم 2022، كوبا أمريكا 2021</p>
-                        <p><strong>جوائز فردية:</strong> الكرة الذهبية 8 مرات، الحذاء الذهبي الأوروبي 6 مرات</p>
-                        <p><strong>إنجاز قياسي:</strong> أكثر لاعب تسجيلاً للأهداف في موسم واحد (73 هدفًا في 2011-2012)</p>
+                        <p><strong>جوائز فردية:</strong> الكرة الذهبية (متعددة)، الحذاء الذهبي الأوروبي (متعدد)</p>
                     </div>
                     <a href="https://ar.wikipedia.org/wiki/ليونيل_ميسي" class="wiki-link" target="_blank">
                         المزيد على ويكيبيديا <i class="fas fa-external-link-alt"></i>
@@ -557,10 +544,9 @@
                 </div>
             </div>
             
-            <!-- كريستيانو رونالدو -->
             <div id="ronaldo-details" class="player-details">
                 <div class="player-details-image">
-                    <img src="https://upload.wikimedia.org/wikipedia/commons/thumb/8/8c/Cristiano_Ronaldo_2018.jpg/800px-Cristiano_Ronaldo_2018.jpg" alt="كريستيانو رونالدو">
+                    <img src="https://upload.wikimedia.org/wikipedia/commons/thumb/8/8c/Cristiano_Ronaldo_2018.jpg/800px-Cristiano_Ronaldo_2018.jpg" alt="كريستيانو رونالدو" loading="lazy">
                 </div>
                 <div class="player-details-info">
                     <h2>كريستيانو رونالدو</h2>
@@ -569,31 +555,27 @@
                     <p><strong>مركز اللعب:</strong> مهاجم</p>
                     <p><strong>أبرز الأندية:</strong> مانشستر يونايتد، ريال مدريد، يوفنتوس، النصر</p>
                     <div class="player-stats">
-                        <p><strong>ألقاب مهمة:</strong> يورو 2016، دوري أبطال أوروبا 5 مرات</p>
-                        <p><strong>جوائز فردية:</strong> الكرة الذهبية 5 مرات، الحذاء الذهبي الأوروبي 4 مرات</p>
-                        <p><strong>رقم قياسي:</strong> الهداف التاريخي في دوري أبطال أوروبا (140+ هدفًا)</p>
+                        <p><strong>ألقاب مهمة:</strong> يورو 2016، دوري أبطال أوروبا (متعدد)</p>
+                        <p><strong>جوائز فردية:</strong> الكرة الذهبية (متعددة)، الحذاء الذهبي الأوروبي (متعدد)</p>
                     </div>
                     <a href="https://ar.wikipedia.org/wiki/كريستيانو_رونالدو" class="wiki-link" target="_blank">
                         المزيد على ويكيبيديا <i class="fas fa-external-link-alt"></i>
                     </a>
                 </div>
             </div>
-            
-            <!-- بيليه -->
             <div id="pele-details" class="player-details">
                 <div class="player-details-image">
-                    <img src="https://upload.wikimedia.org/wikipedia/commons/thumb/2/2e/Pele_%281970%29.jpg/800px-Pele_%281970%29.jpg" alt="بيليه">
+                    <img src="https://upload.wikimedia.org/wikipedia/commons/thumb/2/2e/Pele_%281970%29.jpg/800px-Pele_%281970%29.jpg" alt="بيليه" loading="lazy">
                 </div>
                 <div class="player-details-info">
-                    <h2>بيليه (إدسون أرانتيس دو ناسيمنتو)</h2>
+                    <h2>بيليه <span class="years">(1940 - 2022)</span></h2>
                     <p><strong>الجنسية:</strong> برازيلي</p>
                     <p><strong>تاريخ الميلاد:</strong> 23 أكتوبر 1940</p>
                     <p><strong>مركز اللعب:</strong> مهاجم</p>
                     <p><strong>أبرز الأندية:</strong> سانتوس، نيويورك كوسموس</p>
                     <div class="player-stats">
-                        <p><strong>ألقاب مهمة:</strong> كأس العالم 1958، 1962، 1970 (الوحيد الفائز بثلاث كؤوس عالم)</p>
-                        <p><strong>جوائز فردية:</strong> أفضل لاعب في العالم من الفيفا في القرن العشرين</p>
-                        <p><strong>عدد الأهداف:</strong> 1281 هدفًا في 1363 مباراة (حسب بعض الإحصائيات)</p>
+                        <p><strong>ألقاب مهمة:</strong> كأس العالم (3 مرات: 1958، 1962، 1970)</p>
+                        <p><strong>إنجاز:</strong> يعتبر من أعظم اللاعبين في تاريخ كرة القدم.</p>
                     </div>
                     <a href="https://ar.wikipedia.org/wiki/بيليه" class="wiki-link" target="_blank">
                         المزيد على ويكيبيديا <i class="fas fa-external-link-alt"></i>
@@ -601,42 +583,38 @@
                 </div>
             </div>
             
-            <!-- دييغو مارادونا -->
             <div id="maradona-details" class="player-details">
                 <div class="player-details-image">
-                    <img src="https://upload.wikimedia.org/wikipedia/commons/thumb/2/2c/Maradona-Mundial_86_con_la_copa.JPG/800px-Maradona-Mundial_86_con_la_copa.JPG" alt="دييغو مارادونا">
+                    <img src="https://upload.wikimedia.org/wikipedia/commons/thumb/2/2c/Maradona-Mundial_86_con_la_copa.JPG/800px-Maradona-Mundial_86_con_la_copa.JPG" alt="دييغو مارادونا" loading="lazy">
                 </div>
                 <div class="player-details-info">
-                    <h2>دييغو أرماندو مارادونا <span class="years">(1960 - 2020)</span></h2>
+                    <h2>دييغو مارادونا <span class="years">(1960 - 2020)</span></h2>
                     <p><strong>الجنسية:</strong> أرجنتيني</p>
                     <p><strong>مركز اللعب:</strong> وسط هجومي / مهاجم ثان</p>
                     <p><strong>أبرز الأندية:</strong> بوكا جونيورز، برشلونة، نابولي</p>
                     <div class="player-stats">
-                        <p><strong>ألقاب مهمة:</strong> كأس العالم 1986 (قائد الفريق)، الدوري الإيطالي مع نابولي (1987، 1990)</p>
-                        <p><strong>إنجاز فريد:</strong> الهدف الأسطوري ضد إنجلترا في مونديال 1986 (صنّف كـ"هدف القرن")</p>
-                        <p><strong>جوائز:</strong> الكرة الذهبية الفخرية 1995، أفضل لاعب في القرن العشرين بالتصويت الجماهيري</p>
+                        <p><strong>ألقاب مهمة:</strong> كأس العالم 1986</p>
+                        <p><strong>إنجاز:</strong> قاد نابولي للفوز بالدوري الإيطالي، "هدف القرن".</p>
                     </div>
-                    <a href="https://ar.wikipedia.org/wiki/دييجو_مارادونا" class="wiki-link" target="_blank">
+                    <a href="https://ar.wikipedia.org/wiki/دييغو_مارادونا" class="wiki-link" target="_blank">
                         المزيد على ويكيبيديا <i class="fas fa-external-link-alt"></i>
                     </a>
                 </div>
             </div>
             
-            <!-- كيليان مبابي -->
             <div id="mbappe-details" class="player-details">
                 <div class="player-details-image">
-                    <img src="https://upload.wikimedia.org/wikipedia/commons/thumb/5/57/Kylian_Mbapp%C3%A9_2018.jpg/800px-Kylian_Mbapp%C3%A9_2018.jpg" alt="كيليان مبابي">
+                    <img src="https://upload.wikimedia.org/wikipedia/commons/thumb/5/57/Kylian_Mbapp%C3%A9_2018.jpg/800px-Kylian_Mbapp%C3%A9_2018.jpg" alt="كيليان مبابي" loading="lazy">
                 </div>
                 <div class="player-details-info">
                     <h2>كيليان مبابي</h2>
                     <p><strong>الجنسية:</strong> فرنسي</p>
                     <p><strong>تاريخ الميلاد:</strong> 20 ديسمبر 1998</p>
                     <p><strong>مركز اللعب:</strong> مهاجم</p>
-                    <p><strong>أبرز الأندية:</strong> موناكو، باريس سان جيرمان</p>
+                    <p><strong>أبرز الأندية:</strong> موناكو، باريس سان جيرمان، ريال مدريد</p>
                     <div class="player-stats">
-                        <p><strong>تحديث 2024:</strong> أصبح قائد منتخب فرنسا، وصاحب أعلى أجر في كرة القدم الأوروبية</p>
-                        <p><strong>ألقاب مهمة:</strong> كأس العالم 2018، دوري أبطال أوروبا للشباب 2016</p>
-                        <p><strong>جوائز فردية:</strong> أفضل لاعب شاب في كأس العالم 2018، الحذاء الذهبي في كأس العالم 2022</p>
+                        <p><strong>ألقاب مهمة:</strong> كأس العالم 2018</p>
+                        <p><strong>جوائز:</strong> أفضل لاعب شاب في كأس العالم 2018، هداف كأس العالم 2022.</p>
                     </div>
                     <a href="https://ar.wikipedia.org/wiki/كيليان_مبابي" class="wiki-link" target="_blank">
                         المزيد على ويكيبيديا <i class="fas fa-external-link-alt"></i>
@@ -644,21 +622,19 @@
                 </div>
             </div>
             
-            <!-- نيمار -->
             <div id="neymar-details" class="player-details">
                 <div class="player-details-image">
-                    <img src="https://upload.wikimedia.org/wikipedia/commons/thumb/b/bb/Neymar_Jr._with_Al_Hilal%2C_3_October_2023_-_03_%28cropped%29.jpg/800px-Neymar_Jr._with_Al_Hilal%2C_3_October_2023_-_03_%28cropped%29.jpg" alt="نيمار">
+                    <img src="https://upload.wikimedia.org/wikipedia/commons/thumb/b/bb/Neymar_Jr._with_Al_Hilal%2C_3_October_2023_-_03_%28cropped%29.jpg/800px-Neymar_Jr._with_Al_Hilal%2C_3_October_2023_-_03_%28cropped%29.jpg" alt="نيمار" loading="lazy">
                 </div>
                 <div class="player-details-info">
-                    <h2>نيمار دا سيلفا سانتوس جونيور</h2>
+                    <h2>نيمار جونيور</h2>
                     <p><strong>الجنسية:</strong> برازيلي</p>
                     <p><strong>تاريخ الميلاد:</strong> 5 فبراير 1992</p>
                     <p><strong>مركز اللعب:</strong> جناح / مهاجم</p>
                     <p><strong>أبرز الأندية:</strong> سانتوس، برشلونة، باريس سان جيرمان، الهلال</p>
                     <div class="player-stats">
                         <p><strong>ألقاب مهمة:</strong> دوري أبطال أوروبا 2015، كوبا ليبرتادوريس 2011</p>
-                        <p><strong>جوائز فردية:</strong> أفضل لاعب في أمريكا الجنوبية 2011، 2012</p>
-                        <p><strong>إحصائية:</strong> ثالث أكثر لاعب برازيلي تسجيلًا للأهداف (77 هدفًا دوليًا)</p>
+                        <p><strong>إنجاز:</strong> من أبرز اللاعبين البرازيليين في جيله.</p>
                     </div>
                     <a href="https://ar.wikipedia.org/wiki/نيمار" class="wiki-link" target="_blank">
                         المزيد على ويكيبيديا <i class="fas fa-external-link-alt"></i>
@@ -666,10 +642,9 @@
                 </div>
             </div>
             
-            <!-- لوكا مودريتش -->
             <div id="modric-details" class="player-details">
                 <div class="player-details-image">
-                    <img src="https://upload.wikimedia.org/wikipedia/commons/thumb/4/4f/Luka_Modric_%28cropped%29.jpg/800px-Luka_Modric_%28cropped%29.jpg" alt="لوكا مودريتش">
+                    <img src="https://upload.wikimedia.org/wikipedia/commons/thumb/4/4f/Luka_Modric_%28cropped%29.jpg/800px-Luka_Modric_%28cropped%29.jpg" alt="لوكا مودريتش" loading="lazy">
                 </div>
                 <div class="player-details-info">
                     <h2>لوكا مودريتش</h2>
@@ -678,30 +653,28 @@
                     <p><strong>مركز اللعب:</strong> وسط ميدان</p>
                     <p><strong>أبرز الأندية:</strong> دينامو زغرب، توتنهام، ريال مدريد</p>
                     <div class="player-stats">
-                        <p><strong>ألقاب مهمة:</strong> دوري أبطال أوروبا 5 مرات، كأس العالم 2018 (الوصافة)</p>
-                        <p><strong>جوائز فردية:</strong> الكرة الذهبية 2018، أفضل لاعب في العالم من الفيفا 2018</p>
-                        <p><strong>إنجاز فريد:</strong> أول لاعب يكسر هيمنة ميسي ورونالدو على الكرة الذهبية منذ 10 سنوات</p>
+                        <p><strong>ألقاب مهمة:</strong> دوري أبطال أوروبا (متعدد)، وصيف كأس العالم 2018</p>
+                        <p><strong>جوائز فردية:</strong> الكرة الذهبية 2018</p>
                     </div>
                     <a href="https://ar.wikipedia.org/wiki/لوكا_مودريتش" class="wiki-link" target="_blank">
                         المزيد على ويكيبيديا <i class="fas fa-external-link-alt"></i>
                     </a>
                 </div>
-            </div>
-                        <!-- محمد صلاح -->
+                </div>
+
             <div id="salah-details" class="player-details">
                 <div class="player-details-image">
-                    <img src="https://upload.wikimedia.org/wikipedia/commons/thumb/7/7a/Mohamed_Salah_2018.jpg/800px-Mohamed_Salah_2018.jpg" alt="محمد صلاح">
+                    <img src="https://upload.wikimedia.org/wikipedia/commons/thumb/7/7a/Mohamed_Salah_2018.jpg/800px-Mohamed_Salah_2018.jpg" alt="محمد صلاح" loading="lazy">
                 </div>
                 <div class="player-details-info">
                     <h2>محمد صلاح</h2>
                     <p><strong>الجنسية:</strong> مصري</p>
                     <p><strong>تاريخ الميلاد:</strong> 15 يونيو 1992</p>
-                        <p><strong>مركز اللعب:</strong> جناح / مهاجم</p>
-                    <p><strong>أبرز الأندية:</strong> الأهلي، بازل، تشيلسي، روما، ليفربول</p>
+                    <p><strong>مركز اللعب:</strong> جناح / مهاجم</p>
+                    <p><strong>أبرز الأندية:</strong> بازل، تشيلسي، روما، ليفربول</p>
                     <div class="player-stats">
-                        <p><strong>ألقاب حديثة:</strong> ثلاثية الدوري الإنجليزي، كأس الاتحاد الإنجليزي، وكأس الرابطة مع ليفربول (2022)</p>
-                        <p><strong>جوائز فردية:</strong> الحذاء الذهبي الإنجليزي 2018، 2019، 2022، أفضل لاعب في إفريقيا 2017، 2018، 2021، 2023</p>
-                        <p><strong>رقم قياسي:</strong> الهداف التاريخي لمنتخب مصر (53+ هدفًا)</p>
+                        <p><strong>ألقاب مهمة:</strong> دوري أبطال أوروبا 2019، الدوري الإنجليزي الممتاز 2020</p>
+                        <p><strong>جوائز:</strong> الحذاء الذهبي في الدوري الإنجليزي (متعدد)، أفضل لاعب في إفريقيا.</p>
                     </div>
                     <a href="https://ar.wikipedia.org/wiki/محمد_صلاح" class="wiki-link" target="_blank">
                         المزيد على ويكيبيديا <i class="fas fa-external-link-alt"></i>
@@ -709,118 +682,154 @@
                 </div>
             </div>
             
-            <!-- إرلينغ هالاند -->
             <div id="haaland-details" class="player-details">
                 <div class="player-details-image">
-                    <img src="https://upload.wikimedia.org/wikipedia/commons/thumb/0/0c/Erling_Haaland_2023_%28cropped%29.jpg/800px-Erling_Haaland_2023_%28cropped%29.jpg" alt="إرلينغ هالاند">
+                    <img src="https://upload.wikimedia.org/wikipedia/commons/thumb/0/0c/Erling_Haaland_2023_%28cropped%29.jpg/800px-Erling_Haaland_2023_%28cropped%29.jpg" alt="إرلينغ هالاند" loading="lazy">
                 </div>
                 <div class="player-details-info">
                     <h2>إرلينغ هالاند</h2>
                     <p><strong>الجنسية:</strong> نرويجي</p>
                     <p><strong>تاريخ الميلاد:</strong> 21 يوليو 2000</p>
                     <p><strong>مركز اللعب:</strong> مهاجم</p>
-                    <p><strong>أبرز الأندية:</strong> مولده، ريد بول سالزبورغ، بوروسيا دورتموند، مانشستر سيتي</p>
+                    <p><strong>أبرز الأندية:</strong> ريد بول سالزبورغ، بوروسيا دورتموند، مانشستر سيتي</p>
                     <div class="player-stats">
-                        <p><strong>تحديث 2024:</strong> حطم الرقم القياسي لأكثر أهداف في موسم واحد بالدوري الإنجليزي (36 هدفًا)</p>
-                        <p><strong>ألقاب مهمة:</strong> ثلاثية الدوري الإنجليزي، دوري الأبطال، وكأس الاتحاد الإنجليزي مع مانشستر سيتي (2023)</p>
-                        <p><strong>جوائز فردية:</strong> الحذاء الذهبي الأوروبي 2023، أفضل لاعب في الدوري الإنجليزي 2023</p>
+                      <p><strong>ألقاب مهمة:</strong> دوري أبطال أوروبا 2023، الدوري الإنجليزي الممتاز (متعدد)</p>
+                        <p><strong>إنجاز:</strong> أرقام قياسية في تسجيل الأهداف.</p>
                     </div>
                     <a href="https://ar.wikipedia.org/wiki/إرلينغ_هالاند" class="wiki-link" target="_blank">
                         المزيد على ويكيبيديا <i class="fas fa-external-link-alt"></i>
                     </a>
                 </div>
             </div>
-                <!-- لامين يامال -->
-    <div id="yamal-details" class="player-details">
-        <div class="player-details-image">
-            <img src="https://upload.wikimedia.org/wikipedia/commons/thumb/5/5a/Lamine_Yamal_2023.jpg/800px-Lamine_Yamal_2023.jpg" alt="لامين يامال">
-        </div>
-        <div class="player-details-info">
-            <h2>لامين يامال</h2>
-            <p><strong>الجنسية:</strong> إسباني</p>
-            <p><strong>تاريخ الميلاد:</strong> 13 يوليو 2007</p>
-            <p><strong>مركز اللعب:</strong> جناح أيمن</p>
-            <p><strong>النادي الحالي:</strong> برشلونة</p>
-            <div class="player-stats">
-                <p><strong>إنجازات:</strong> أصغر لاعب يشارك مع برشلونة في الليغا (15 سنة)</p>
-                <p><strong>موهبة:</strong> يعتبر أحد أكبر المواهب الكروية في أوروبا حالياً</p>
+
+            <div id="yamal-details" class="player-details">
+                <div class="player-details-image">
+                    <img src="https://upload.wikimedia.org/wikipedia/commons/thumb/5/5a/Lamine_Yamal_2023.jpg/800px-Lamine_Yamal_2023.jpg" alt="لامين يامال" loading="lazy">
+                </div>
+                <div class="player-details-info">
+                    <h2>لامين يامال</h2>
+                    <p><strong>الجنسية:</strong> إسباني</p>
+                    <p><strong>تاريخ الميلاد:</strong> 13 يوليو 2007</p>
+                    <p><strong>مركز اللعب:</strong> جناح أيمن</p>
+                    <p><strong>النادي الحالي:</strong> برشلونة</p>
+                    <div class="player-stats">
+                        <p><strong>إنجازات:</strong> أصغر لاعب يشارك ويسجل مع برشلونة والمنتخب الإسباني.</p>
+                        <p><strong>موهبة:</strong> يعتبر من أبرز المواهب الصاعدة في العالم.</p>
+                    </div>
+                    <a href="https://ar.wikipedia.org/wiki/لامين_يامال" class="wiki-link" target="_blank">
+                        المزيد على ويكيبيديا <i class="fas fa-external-link-alt"></i>
+                    </a>
+                </div>
             </div>
-            <a href="https://ar.wikipedia.org/wiki/لامين_يامال" class="wiki-link" target="_blank">
-                المزيد على ويكيبيديا <i class="fas fa-external-link-alt"></i>
-            </a>
-        </div>
-    </div>
-    
-    <!-- جود بيلينغهام -->
-    <div id="bellingham-details" class="player-details">
-        <div class="player-details-image">
-            <img src="https://upload.wikimedia.org/wikipedia/commons/thumb/4/4a/Jude_Bellingham_2022.jpg/800px-Jude_Bellingham_2022.jpg" alt="جود بيلينغهام">
-        </div>
-        <div class="player-details-info">
-            <h2>جود بيلينغهام</h2>
-            <p><strong>الجنسية:</strong> إنجليزي</p>
-            <p><strong>تاريخ الميلاد:</strong> 29 يونيو 2003</p>
-            <p><strong>مركز اللعب:</strong> وسط ميدان</p>
-            <p><strong>النادي الحالي:</strong> ريال مدريد</p>
-            <div class="player-stats">
-                <p><strong>إنجازات:</strong> أفضل لاعب شاب في الدوري الألماني 2023</p>
-                <p><strong>تحويلات:</strong> انتقل لريال مدريد مقابل 103 مليون يورو (2023)</p>
+            
+            <div id="bellingham-details" class="player-details">
+                <div class="player-details-image">
+                    <img src="https://upload.wikimedia.org/wikipedia/commons/thumb/4/4a/Jude_Bellingham_2022.jpg/800px-Jude_Bellingham_2022.jpg" alt="جود بيلينغهام" loading="lazy">
+                </div>
+                <div class="player-details-info">
+                    <h2>جود بيلينغهام</h2>
+                    <p><strong>الجنسية:</strong> إنجليزي</p>
+                    <p><strong>تاريخ الميلاد:</strong> 29 يونيو 2003</p>
+                    <p><strong>مركز اللعب:</strong> وسط ميدان</p>
+                    <p><strong>النادي الحالي:</strong> ريال مدريد</p>
+                    <div class="player-stats">
+                        <p><strong>إنجازات:</strong> تأثير فوري مع ريال مدريد، جائزة كوبا 2023.</p>
+                        <p><strong>إضافة:</strong> لاعب متكامل بقدرات هجومية ودفاعية.</p>
+                    </div>
+                    <a href="https://ar.wikipedia.org/wiki/جود_بيلينغهام" class="wiki-link" target="_blank">
+                        المزيد على ويكيبيديا <i class="fas fa-external-link-alt"></i>
+                    </a>
+                </div>
             </div>
-            <a href="https://ar.wikipedia.org/wiki/جود_بيلينغهام" class="wiki-link" target="_blank">
-                المزيد على ويكيبيديا <i class="fas fa-external-link-alt"></i>
-            </a>
-        </div>
-    </div>
-    
-    <!-- أردا غولر -->
-    <div id="guler-details" class="player-details">
-        <div class="player-details-image">
-            <img src="https://upload.wikimedia.org/wikipedia/commons/thumb/1/1b/Arda_G%C3%BCler_T%C3%BCrkiye_2023.jpg/800px-Arda_G%C3%BCler_T%C3%BCrkiye_2023.jpg" alt="أردا غولر">
-        </div>
-        <div class="player-details-info">
-            <h2>أردا غولر</h2>
-            <p><strong>الجنسية:</strong> تركي</p>
-            <p><strong>تاريخ الميلاد:</strong> 25 فبراير 2005</p>
-            <p><strong>مركز اللعب:</strong> وسط هجومي</p>
-            <p><strong>النادي الحالي:</strong> ريال مدريد</p>
-            <div class="player-stats">
-                <p><strong>إنجازات:</strong> أصغر لاعب يسجل مع المنتخب التركي (17 سنة)</p>
-                <p><strong>موهبة:</strong> يلقب بـ"الماسة التركية"</p>
+            
+            <div id="guler-details" class="player-details">
+                <div class="player-details-image">
+                    <img src="https://upload.wikimedia.org/wikipedia/commons/thumb/1/1b/Arda_G%C3%BCler_T%C3%BCrkiye_2023.jpg/800px-Arda_G%C3%BCler_T%C3%BCrkiye_2023.jpg" alt="أردا غولر" loading="lazy">
+                </div>
+                <div class="player-details-info">
+                    <h2>أردا غولر</h2>
+                    <p><strong>الجنسية:</strong> تركي</p>
+                    <p><strong>تاريخ الميلاد:</strong> 25 فبراير 2005</p>
+                    <p><strong>مركز اللعب:</strong> وسط هجومي</p>
+                    <p><strong>النادي الحالي:</strong> ريال مدريد</p>
+                    <div class="player-stats">
+                        <p><strong>إنجازات:</strong> موهبة صاعدة بسرعة، أظهر لمسات فنية عالية.</p>
+                        <p><strong>موهبة:</strong> يلقب بـ"ميسي تركيا".</p>
+                    </div>
+                    <a href="https://ar.wikipedia.org/wiki/أردا_غولر" class="wiki-link" target="_blank">
+                        المزيد على ويكيبيديا <i class="fas fa-external-link-alt"></i>
+                    </a>
+                </div>
             </div>
-            <a href="https://ar.wikipedia.org/wiki/أردا_غولر" class="wiki-link" target="_blank">
-                المزيد على ويكيبيديا <i class="fas fa-external-link-alt"></i>
-            </a>
-        </div>
-    </div>
-</section>
+
+            <div id="gavi-details" class="player-details">
+                <div class="player-details-image">
+                    <img src="https://upload.wikimedia.org/wikipedia/commons/thumb/2/25/Gavi_2021.jpg/800px-Gavi_2021.jpg" alt="جافي" loading="lazy">
+                </div>
+                <div class="player-details-info">
+                    <h2>جافي (بابلو مارتن بايز غافيرا)</h2>
+                    <p><strong>الجنسية:</strong> إسباني</p>
+                    <p><strong>تاريخ الميلاد:</strong> 5 أغسطس 2004</p>
+                    <p><strong>مركز اللعب:</strong> لاعب وسط</p>
+                    <p><strong>النادي الحالي:</strong> برشلونة</p>
+                    <div class="player-stats">
+                        <p><strong>إنجازات مهمة:</strong> جائزة كوبا 2022، جائزة الفتى الذهبي 2022.</p>
+                        <p><strong>إضافة:</strong> روح قتالية عالية وأداء مميز في سن مبكرة.</p>
+                    </div>
+                    <a href="https://ar.wikipedia.org/wiki/%D8%BA%D8%A7%D9%81%D9%8A_(%D9%84%D8%A7%D8%B9%D8%A8_%D9%83%D8%B1%D8%A9_%D9%82%D8%AF%D9%85)" class="wiki-link" target="_blank">
+                        المزيد على ويكيبيديا <i class="fas fa-external-link-alt"></i>
+                    </a>
+                </div>
+            </div>
         
-        <!-- قسم التواصل -->
-<section id="contact" class="contact-section" style="display: none;">
-    <h2>تواصل معنا</h2>
-    <div class="contact-methods">
-        <div class="contact-card">
-            <i class="fab fa-facebook"></i>
-            <h3>فيسبوك</h3>
-            <a href="https://www.facebook.com/share/18xTHCrtrm/" target="_blank">
-                <i class="fab fa-facebook"></i> صفحتنا على الفيسبوك
-            </a>
-        </div>
-        <div class="contact-card">
-            <i class="fab fa-whatsapp"></i>
-            <h3>واتساب</h3>
-            <a href="https://wa.me/212641491003" target="_blank">
-                <i class="fab fa-whatsapp"></i> +212 641-491003
-            </a>
-        </div>
-        <div class="contact-card">
-            <i class="fas fa-phone-alt"></i>
-            <h3>اتصال هاتفي</h3>
-            <a href="tel:+212641491003">
-                <i class="fas fa-phone-alt"></i> +212 641-491003
-            </a>
-        </div>
-    </div>
-</section>
+            <div id="vinicius-details" class="player-details">
+                <div class="player-details-image">
+                    <img src="https://upload.wikimedia.org/wikipedia/commons/thumb/6/68/Vinicius_Junior_2018.jpg/800px-Vinicius_Junior_2018.jpg" alt="فينيسيوس جونيور" loading="lazy">
+                </div>
+                <div class="player-details-info">
+                    <h2>فينيسيوس جونيور</h2>
+                    <p><strong>الجنسية:</strong> برازيلي</p>
+                    <p><strong>تاريخ الميلاد:</strong> 12 يوليو 2000</p>
+                    <p><strong>مركز اللعب:</strong> مهاجم / جناح</p>
+                    <p><strong>النادي الحالي:</strong> ريال مدريد</p>
+                    <div class="player-stats">
+                        <p><strong>إنجازات مهمة:</strong> سجل أهدافاً حاسمة في نهائيات دوري أبطال أوروبا.</p>
+                        <p><strong>إضافة:</strong> معروف بسرعته الفائقة ومهاراته في المراوغة.</p>
+                    </div>
+                    <a href="https://ar.wikipedia.org/wiki/%D9%81%D9%8A%D9%86%D9%8A%D8%B3%D9%8A%D9%88%D8%B3_%D8%AC%D9%88%D9%86%D9%8A%D9%88%D8%B1" class="wiki-link" target="_blank">
+                        المزيد على ويكيبيديا <i class="fas fa-external-link-alt"></i>
+                    </a>
+                </div>
+            </div>
+
+        </section>
+        
+        <section id="contact" class="page-section contact-section" style="display: none;">
+            <h2>تواصل معنا</h2>
+            <div class="contact-methods">
+                <div class="contact-card">
+                    <i class="fab fa-facebook"></i>
+                    <h3>فيسبوك</h3>
+                    <a href="https://www.facebook.com/share/18xTHCrtrm/" target="_blank">
+                       صفحتنا على الفيسبوك
+                    </a>
+                </div>
+                <div class="contact-card">
+                    <i class="fab fa-whatsapp"></i>
+                    <h3>واتساب</h3>
+                    <a href="https://wa.me/212641491003" target="_blank">
+                       +212 641-491003
+                    </a>
+                </div>
+                <div class="contact-card">
+                    <i class="fas fa-phone-alt"></i>
+                    <h3>اتصال هاتفي</h3>
+                    <a href="tel:+212641491003">
+                       +212 641-491003
+                    </a>
+                </div>
+            </div>
+        </section>
         
         <a href="#" class="back-to-top"><i class="fas fa-arrow-up"></i></a>
         
@@ -839,16 +848,26 @@
     <script>
         // إخفاء شاشة التحميل بعد تحميل الصفحة
         window.addEventListener('load', function() {
-            setTimeout(function() {
-                const loadingScreen = document.querySelector('.loading-screen');
-                if (loadingScreen) {
-                    loadingScreen.style.opacity = '0';
-                    setTimeout(() => {
-                        loadingScreen.style.display = 'none';
-                        document.querySelector('.main-content').style.display = 'block';
-                    }, 500);
-                }
-            }, 1500);
+            const loadingScreen = document.querySelector('.loading-screen');
+            const mainContent = document.querySelector('.main-content');
+
+            if (loadingScreen) {
+              loadingScreen.style.opacity = '0';
+                loadingScreen.addEventListener('transitionend', function() {
+                    loadingScreen.style.display = 'none';
+                    if (mainContent) {
+                        mainContent.style.display = 'block';
+                    }
+                }, { once: true });
+            } else if (mainContent) {
+                // إذا لم تكن هناك شاشة تحميل، أظهر المحتوى الرئيسي مباشرة
+                mainContent.style.display = 'block';
+            }
+            // إظهار القسم الرئيسي (home) بشكل افتراضي
+            const homeSection = document.getElementById('home');
+            if (homeSection) {
+                homeSection.style.display = 'block';
+            }
         });
 
         // التنقل بين الأقسام
@@ -856,41 +875,114 @@
             link.addEventListener('click', function(e) {
                 e.preventDefault();
                 const targetId = this.getAttribute('href').substring(1);
-                document.querySelectorAll('section').forEach(section => {
+                
+                // إخفاء جميع أقسام الصفحة الرئيسية
+                document.querySelectorAll('section.page-section').forEach(section => {
                     section.style.display = 'none';
                 });
-                document.getElementById(targetId).style.display = 'block';
                 
-                // إظهار تفاصيل اللاعب عند النقر على بطاقته
-                if (targetId === 'players-info') {
-                    document.querySelector('.player-details').classList.add('active');
+                const targetSection = document.getElementById(targetId);
+                if (targetSection) {
+                    targetSection.style.display = 'block';
                 }
+                
+                // إذا تم النقر على "معلومات اللاعبين" ولم يكن هناك لاعب محدد ظاهر، أظهر اللاعب الأول
+                if (targetId === 'players-info') {
+                    const anyActiveDetails = document.querySelector('.player-details[style*="display: flex"], .player-details[style*="display: block"]');
+                    if (!anyActiveDetails) {
+                        const defaultPlayerDetails = document.getElementById('zidane-details'); // أو أي لاعب افتراضي آخر
+                        if (defaultPlayerDetails) {
+                            // إخفاء كل التفاصيل الأخرى أولاً
+                            document.querySelectorAll('.player-details').forEach(detail => {
+                                detail.style.display = 'none';
+                            });
+                            defaultPlayerDetails.style.display = 'flex';
+                        }
+                    }
+                }
+
+                // إذا تم النقر على "معرض اللاعبين"، قم بإعادة تعيين البحث وإظهار جميع البطاقات
+                 if (targetId === 'players-gallery') {
+                    const searchInput = document.getElementById('playerSearchInput');
+                    if (searchInput) {
+                        searchInput.value = ''; // مسح حقل البحث
+                    }
+                    document.querySelectorAll('.players-grid .player-card').forEach(card => {
+                        card.style.display = 'block'; // أو 'grid' حسب الأصل
+                    });
+                }
+                 window.scrollTo({ top: 0, behavior: 'smooth' }); // انتقال لأعلى الصفحة عند التنقل
             });
         });
 
         // إظهار/إخفاء زر العودة للأعلى
-        window.addEventListener('scroll', function() {
-            const backToTopButton = document.querySelector('.back-to-top');
-            if (window.pageYOffset > 300) {
-                backToTopButton.style.display = 'block';
-            } else {
-                backToTopButton.style.display = 'none';
-            }
-        });
+        const backToTopButton = document.querySelector('.back-to-top');
+        if (backToTopButton) {
+          window.addEventListener('scroll', function() {
+                if (window.pageYOffset > 300) {
+                    backToTopButton.style.display = 'block';
+                } else {
+                    backToTopButton.style.display = 'none';
+                }
+            });
+             backToTopButton.addEventListener('click', function(e) {
+                e.preventDefault();
+                window.scrollTo({ top: 0, behavior: 'smooth' });
+            });
+        }
 
-        // النقر على بطاقات اللاعبين
+
+        // النقر على بطاقات اللاعبين لإظهار التفاصيل
         document.querySelectorAll('.player-card').forEach(card => {
             card.addEventListener('click', function() {
                 const playerId = this.getAttribute('data-player');
+                
+                // إخفاء جميع أقسام الصفحة الرئيسية أولاً
+                document.querySelectorAll('section.page-section').forEach(section => {
+                    section.style.display = 'none';
+                });
+
+                // إظهار قسم معلومات اللاعبين
+                const playersInfoSection = document.getElementById('players-info');
+                if (playersInfoSection) {
+                    playersInfoSection.style.display = 'block';
+                }
+                
+                // إخفاء جميع تفاصيل اللاعبين الأخرى
                 document.querySelectorAll('.player-details').forEach(detail => {
                     detail.style.display = 'none';
                 });
-                document.getElementById(playerId + '-details').style.display = 'flex';
-                document.getElementById('players-info').style.display = 'block';
-                window.scrollTo({ top: 0, behavior: 'smooth' });
+                
+                // إظهار تفاصيل اللاعب المحدد
+                const targetPlayerDetails = document.getElementById(playerId + '-details');
+                if (targetPlayerDetails) {
+                    targetPlayerDetails.style.display = 'flex';
+                }
+                
+                window.scrollTo({ top: playersInfoSection ? playersInfoSection.offsetTop - 20 : 0, behavior: 'smooth' });
             });
         });
+
+        // وظيفة البحث عن اللاعبين
+        const playerSearchInput = document.getElementById('playerSearchInput');
+        if (playerSearchInput) {
+            playerSearchInput.addEventListener('keyup', function(e) {
+                const searchTerm = e.target.value.toLowerCase().trim();
+                const playerCards = document.querySelectorAll('.players-grid .player-card');
+                
+                playerCards.forEach(card => {
+                    const playerNameElement = card.querySelector('h3');
+                    if (playerNameElement) {
+                        const playerName = playerNameElement.textContent.toLowerCase();
+                        if (playerName.includes(searchTerm)) {
+                            card.style.display = 'block'; // أو 'grid' / 'flex' حسب تصميمك الأصلي للعناصر داخل grid
+                        } else {
+                            card.style.display = 'none';
+                        }
+                    }
+                });
+            });
+        }
     </script>
 </body>
-                </html>
-    
+    </html>
