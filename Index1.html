@@ -1,0 +1,628 @@
+<!DOCTYPE html>
+<html lang="ar" dir="rtl">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>موقع عشاق الوداد الرياضي</title>
+    <link href="https://fonts.googleapis.com/css2?family=Cairo:wght@400;700&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+    <style>
+        /* إعادة تعيين الأنماط الأساسية */
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+
+        html {
+            scroll-behavior: smooth; /* للتنقل السلس بين الأقسام */
+        }
+
+        body {
+            font-family: 'Cairo', sans-serif; /* استخدام الخط الجديد */
+            background: linear-gradient(to bottom, #cc0000, #ff3333); /* تدرج لوني جذاب */
+            color: #ffffff;
+            line-height: 1.6;
+            overflow-x: hidden; /* منع الشريط الأفقي */
+        }
+
+        /* شعار الوداد في الخلفية */
+        .background-logo {
+            position: fixed;
+            top: 50%;
+            left: 50%;
+            transform: translate(-50%, -50%);
+            width: min(80%, 500px); /* حجم متجاوب للشعار */
+            height: auto;
+            opacity: 0.08; /* شفافية أقل بقليل */
+            z-index: -1;
+            pointer-events: none; /* لا يتفاعل مع الماوس */
+        }
+
+        /* شريط التنقل العلوي */
+        header {
+            background-color: rgba(0, 0, 0, 0.5); /* خلفية شبه شفافة */
+            color: #ffffff;
+            padding: 15px 20px;
+            position: fixed; /* شريط تنقل ثابت */
+            top: 0;
+            left: 0;
+            width: 100%;
+            z-index: 1000; /* ليبقى فوق المحتوى */
+            box-shadow: 0 2px 5px rgba(0, 0, 0, 0.2);
+        }
+
+        nav ul {
+            list-style: none;
+            text-align: center;
+        }
+
+        nav ul li {
+            display: inline-block;
+            margin: 0 15px;
+        }
+
+        nav ul li a {
+            color: #ffffff;
+            text-decoration: none;
+            font-size: 18px;
+            padding: 5px 10px;
+            transition: color 0.3s ease, border-bottom 0.3s ease;
+        }
+
+        nav ul li a:hover {
+            color: #ffcc00; /* لون مختلف عند التحويم */
+            border-bottom: 2px solid #ffcc00;
+        }
+
+        /* أقسام الصفحة */
+        section {
+            padding: 80px 20px 40px; /* مسافة علوية أكبر لإتاحة مكان للشريط الثابت */
+            min-height: 100vh; /* كل قسم يملأ الشاشة تقريباً */
+            display: flex;
+            flex-direction: column;
+            justify-content: center;
+            align-items: center;
+            text-align: center;
+            position: relative;
+            /* للتأكد من أن الأقسام تبدأ بعد الهيدر الثابت */
+            margin-top: 60px; /* مسافة تعادل ارتفاع الهيدر تقريبًا */
+        }
+         /* تعديل المسافة العلوية للقسم الأول فقط */
+        #home {
+            margin-top: 0; /* إزالة المسافة العلوية للقسم الأول */
+            padding-top: 140px; /* زيادة المساحة العلوية لتعويض الهيدر */
+        }
+
+
+        section h1, section h2 {
+            margin-bottom: 30px;
+            font-size: 3em;
+            color: #ffffff;
+            text-shadow: 2px 2px 4px rgba(0, 0, 0, 0.3);
+        }
+         section h2 {
+             font-size: 2.5em;
+         }
+
+        .container {
+            max-width: 900px;
+            margin: 0 auto;
+            background-color: rgba(0, 0, 0, 0.3); /* خلفية شفافة للعناصر داخل الأقسام */
+            padding: 30px;
+            border-radius: 10px;
+            backdrop-filter: blur(5px); /* تأثير ضبابي للخلفية */
+            animation: fadeIn 1s ease-out; /* إضافة تأثير ظهور للأقسام */
+            width: 95%; /* عرض متجاوب للحاوية */
+        }
+
+        @keyframes fadeIn {
+            from { opacity: 0; transform: translateY(20px); }
+            to { opacity: 1; transform: translateY(0); }
+        }
+
+        /* أزرار الإجراءات */
+        .btn {
+            display: inline-block;
+            padding: 15px 30px;
+            background-color: #ffffff;
+            color: #cc0000;
+            text-decoration: none;
+            font-size: 18px;
+            border: 2px solid #cc0000;
+            border-radius: 5px;
+            transition: all 0.3s ease;
+            margin-top: 20px;
+            cursor: pointer;
+        }
+
+        .btn:hover {
+            background-color: #ff3330;
+            color: #ffffff;
+            transform: translateY(-3px); /* تأثير بسيط عند التحويم */
+            box-shadow: 0 5px 10px rgba(0, 0, 0, 0.2);
+        }
+         .btn-secondary {
+            background-color: #cc0000;
+            color: #ffffff;
+             border: 2px solid #ffffff;
+             margin-left: 10px;
+         }
+        .btn-secondary:hover {
+            background-color: #ffffff;
+            color: #cc0000;
+            border: 2px solid #cc0000;
+        }
+
+
+        /* تنسيقات النموذج والاختبار */
+        .form-group {
+            margin-bottom: 20px;
+            text-align: right; /* محاذاة النصوص لليمين */
+            width: 100%;
+        }
+
+        .form-group label {
+            display: block;
+            margin-bottom: 8px;
+            font-size: 1.1em;
+            font-weight: bold;
+        }
+
+        .form-group input[type="text"],
+        .form-group input[type="number"] {
+            width: 100%;
+            padding: 12px;
+            border: none;
+            border-radius: 5px;
+            background-color: rgba(255, 255, 255, 0.9); /* خلفية بيضاء شبه شفافة */
+            color: #333;
+            font-size: 1em;
+        }
+         .form-group input:focus {
+             outline: none;
+             box-shadow: 0 0 5px rgba(255, 255, 255, 0.5);
+         }
+
+        .quiz-question {
+            margin-bottom: 25px;
+            text-align: right;
+            width: 100%;
+        }
+
+        .quiz-question label {
+            display: block;
+            margin-bottom: 10px;
+            font-size: 1.1em;
+            font-weight: bold;
+        }
+
+        .quiz-question .options label {
+            display: inline-block; /* عرض الخيارات بجانب بعض */
+            margin-right: 20px;
+            font-weight: normal;
+            cursor: pointer;
+        }
+
+        .quiz-question input[type="radio"] {
+             margin-left: 5px;
+             cursor: pointer;
+        }
+
+        /* نتيجة الاختبار */
+        .result {
+            margin-top: 30px;
+            font-size: 2em;
+            font-weight: bold;
+            color: #ffcc00; /* لون مميز للنتيجة */
+        }
+         .result i {
+             margin-left: 10px; /* مسافة بعد الأيقونة */
+         }
+
+        .icon-title {
+            margin-left: 10px; /* مسافة بعد الأيقونة في العناوين */
+        }
+
+        /* تنسيقات قسم معلومات الاتصال */
+        .contact-info {
+            margin-top: 20px;
+            text-align: right;
+            width: 100%;
+        }
+
+        .contact-item {
+            margin-bottom: 15px;
+            font-size: 1.2em;
+        }
+
+        .contact-item i {
+            margin-left: 10px;
+            color: #ffcc00; /* لون الأيقونات */
+        }
+
+        .contact-item a {
+            color: #ffffff;
+            text-decoration: none;
+            transition: color 0.3s ease;
+        }
+
+        .contact-item a:hover {
+            color: #ffcc00;
+        }
+
+
+        /* تذييل الصفحة */
+        footer {
+            background-color: rgba(0, 0, 0, 0.5);
+            color: #ffffff;
+            text-align: center;
+            padding: 20px;
+            margin-top: 40px;
+        }
+         footer p {
+             margin: 0;
+             font-size: 0.9em;
+         }
+
+        /* تحسينات الأجهزة الصغيرة */
+        @media (max-width: 768px) {
+            nav ul li {
+                margin: 0 8px;
+            }
+            nav ul li a {
+                font-size: 16px;
+            }
+             section {
+                 padding-top: 100px; /* مسافة أكبر مع الشريط الثابت */
+                 min-height: auto; /* لا تشغل الشاشة بالكامل على الجوال */
+                 margin-top: 50px; /* تعديل المسافة العلوية للأقسام على الجوال */
+             }
+             #home {
+                 padding-top: 120px; /* تعديل المساحة العلوية للقسم الأول على الجوال */
+             }
+            section h1 {
+                font-size: 2.5em;
+            }
+            section h2 {
+                font-size: 2em;
+            }
+            .btn {
+                padding: 12px 25px;
+                font-size: 16px;
+            }
+            .container {
+                padding: 20px;
+            }
+             .quiz-question .options label {
+                 display: block; /* عرض الخيارات تحت بعضها على الجوال */
+                 margin-right: 0;
+                 margin-bottom: 10px;
+             }
+             .quiz-question input[type="radio"] {
+                 margin-right: 5px; /* تعديل المسافة للراديو باتون */
+                 margin-left: 0;
+             }
+             .contact-item {
+                 font-size: 1em;
+             }
+        }
+    </style>
+</head>
+<body>
+
+    <img src="imag.jpg" alt="شعار الوداد" class="background-logo">
+
+    <header>
+        <nav>
+            <ul>
+                <li><a href="#home"><i class="fas fa-home icon-title"></i> الرئيسية</a></li>
+                <li><a href="#about"><i class="fas fa-info-circle icon-title"></i> عن النادي</a></li>
+                <li><a href="#register"><i class="fas fa-user-plus icon-title"></i> تسجيل</a></li>
+                <li><a href="#quiz"><i class="fas fa-futbol icon-title"></i> اختبار</a></li>
+                 <li><a href="#contact"><i class="fas fa-address-book icon-title"></i> اتصال</a></li>
+                </ul>
+        </nav>
+    </header>
+
+    <section id="home">
+        <div class="container">
+            <h1><i class="fas fa-heart icon-title"></i> موقع عشاق الوداد الرياضي</h1>
+            <p>مرحباً بك في مساحة خاصة لكل محبي القلعة الحمراء! هنا نحتفي بتاريخ الوداد العريق وشغف جماهيره.</p>
+            <a href="https://ar.wikipedia.org/wiki/%D9%86%D8%A7%D8%AF%D9%8A_%D8%A7%D9%84%D9%88%D8%AF%D8%A7%D8%AF_%D8%A7%D9%84%D8%B1%D9%8A%D8%A7%D8%B6%D9%8A" class="btn" target="_blank">اكتشف المزيد</a>
+        </div>
+    </section>
+
+    <section id="about">
+         <div class="container">
+             <h2><i class="fas fa-info-circle icon-title"></i> عن نادي الوداد الرياضي</h2>
+             <p>نادي الوداد الرياضي هو أحد أعرق وأكبر الأندية في المغرب وإفريقيا، تأسس عام 1937 على يد مجموعة من الوطنيين المغاربة. يشتهر بتاريخه الحافل بالإنجازات وبقاعدته الجماهيرية العريضة والمعروفة بـ "الوينرز".</p>
+             <p>فاز النادي بالعديد من الألقاب المحلية والقارية، بما في ذلك الدوري المغربي وكأس العرش ودوري أبطال إفريقيا، ليصبح رمزاً للصمود والتألق في كرة القدم.</p>
+             <a href="#contact" class="btn btn-secondary">انضم إلينا</a>
+         </div>
+    </section>
+
+    <section id="register">
+        <div class="container">
+            <h2><i class="fas fa-user-plus icon-title"></i> تسجيل عشاق الوداد</h2>
+            <form id="registerForm">
+                <div class="form-group">
+                    <label for="name">الاسم:</label>
+                    <input type="text" id="name" name="name" required>
+                </div>
+                <div class="form-group">
+                    <label for="family">النسب:</label>
+                    <input type="text" id="family" name="family" required>
+                </div>
+                <div class="form-group">
+                    <label for="birthyear">سنة الميلاد:</label>
+                    <input type="number" id="birthyear" name="birthyear" min="1900" max="2025" required>
+                </div>
+                 <div class="form-group">
+                    <label for="supportyear">سنة بدء الدعم:</label>
+                    <input type="number" id="supportyear" name="supportyear" min="1937" max="2025" required>
+                </div>
+                <button type="submit" class="btn">التالي للاختبار</button>
+            </form>
+        </div>
+    </section>
+
+    <section id="quiz">
+        <div class="container">
+            <h2><i class="fas fa-futbol icon-title"></i> اختبار عشاق الوداد</h2>
+            <form id="quizForm">
+                <div class="quiz-question">
+                    <label>1. متى أُسس نادي الوداد الرياضي؟</label>
+                    <div class="options">
+                        <input type="radio" name="q1" value="1930" id="q1_a"><label for="q1_a"> 1930</label>
+                        <input type="radio" name="q1" value="1937" id="q1_b"><label for="q1_b"> 1937</label>
+                        <input type="radio" name="q1" value="1945" id="q1_c"><label for="q1_c"> 1945</label>
+                    </div>
+                </div>
+                <div class="quiz-question">
+                    <label>2. من كان أول رئيس للنادي؟</label>
+                     <div class="options">
+                        <input type="radio" name="q2" value="مصطفى الوحيد" id="q2_a"><label for="q2_a"> مصطفى الوحيد</label>
+                        <input type="radio" name="q2" value="عبد الكريم الجلولي" id="q2_b"><label for="q2_b"> عبد الكريم الجلولي</label>
+                        <input type="radio" name="q2" value="محمد بنعيسى" id="q2_c"><label for="q2_c"> محمد بنعيسى</label>
+                     </div>
+                </div>
+                 <div class="quiz-question">
+                    <label>3. من هو اللاعب الشهير الذي ارتبط بإنجازات كبيرة مع الوداد؟</label>
+                     <div class="options">
+                         <input type="radio" name="q3" value="عبد الرحيم العسري" id="q3_a"><label for="q3_a"> عبد الرحيم العسري</label>
+                         <input type="radio" name="q3" value="نجيب المليحي" id="q3_b"><label for="q3_b"> نجيب المليحي</label>
+                         <input type="radio" name="q3" value="عبد الله الجراري" id="q3_c"><label for="q3_c"> عبد الله الجراري</label>
+                     </div>
+                 </div>
+                 <div class="quiz-question">
+                    <label>4. في أي سنة فاز الوداد بلقب دوري أبطال إفريقيا لأول مرة؟</label>
+                     <div class="options">
+                         <input type="radio" name="q4" value="1992" id="q4_a"><label for="q4_a"> 1992</label>
+                         <input type="radio" name="q4" value="2017" id="q4_b"><label for="q4_b"> 2017</label>
+                         <input type="radio" name="q4" value="2019" id="q4_c"><label for="q4_c"> 2019</label>
+                     </div>
+                 </div>
+                 <div class="quiz-question">
+                     <label>5. من اللاعب الذي سجل هدف الفوز في نهائي دوري الأبطال 2017؟</label>
+                     <div class="options">
+                         <input type="radio" name="q5" value="وليد الكرتي" id="q5_a"><label for="q5_a"> وليد الكرتي</label>
+                         <input type="radio" name="q5" value="يوسف النصيري" id="q5_b"><label for="q5_b"> يوسف النصيري</label>
+                         <input type="radio" name="q5" value="محمد أوفقير" id="q5_c"><label for="q5_c"> محمد أوفقير</label>
+                     </div>
+                 </div>
+                <div class="quiz-question">
+                    <label>6. كم عدد ألقاب الدوري الوطني التي فاز بها الوداد حتى 2025؟</label>
+                     <div class="options">
+                         <input type="radio" name="q6" value="20" id="q6_a"><label for="q6_a"> 20</label>
+                         <input type="radio" name="q6" value="22" id="q6_b"><label for="q6_b"> 22</label>
+                         <input type="radio" name="q6" value="25" id="q6_c"><label for="q6_c"> 25</label>
+                     </div>
+                </div>
+                <div class="quiz-question">
+                    <label>7. من المدرب الذي قاد الوداد للفوز بلقب دوري أبطال إفريقيا 2017؟</label>
+                     <div class="options">
+                         <input type="radio" name="q7" value="فوزي البنزرتي" id="q7_a"><label for="q7_a"> فوزي البنزرتي</label>
+                         <input type="radio" name="q7" value="الحسين عموتة" id="q7_b"><label for="q7_b"> الحسين عموتة</label>
+                         <input type="radio" name="q7" value="هيرفي رينار" id="q7_c"><label for="q7_c"> هيرفي رينار</label>
+                     </div>
+                </div>
+                <div class="quiz-question">
+                    <label>8. ما هو اللقب الشعبي الأكثر شهرة لجماهير الوداد؟</label>
+                     <div class="options">
+                         <input type="radio" name="q8" value="الجنود الحمر" id="q8_a"><label for="q8_a"> الجنود الحمر</label>
+                         <input type="radio" name="q8" value="الوينرز" id="q8_b"><label for="q8_b"> الوينرز</label>
+                         <input type="radio" name="q8" value="الشياطين الحمر" id="q8_c"><label for="q8_c"> الشياطين الحمر</label>
+                     </div>
+                </div>
+                <div class="quiz-question">
+                    <label>9. في أي مدينة أُسس نادي الوداد الرياضي؟</label>
+                     <div class="options">
+                         <input type="radio" name="q9" value="الدار البيضاء" id="q9_a"><label for="q9_a"> الدار البيضاء</label>
+                         <input type="radio" name="q9" value="الرباط" id="q9_b"><label for="q9_b"> الرباط</label>
+                         <input type="radio" name="q9" value="مراكش" id="q9_c"><label for="q9_c"> مراكش</label>
+                     </div>
+                </div>
+                <div class="quiz-question">
+                    <label>10. من اللاعب المعروف كأحد أبرز الهدافين التاريخيين للنادي؟</label>
+                     <div class="options">
+                         <input type="radio" name="q10" value="عبد اللطيف جرو" id="q10_a"><label for="q10_a"> عبد اللطيف جرو</label>
+                         <input type="radio" name="q10" value="عز الدين الشكيلي" id="q10_b"><label for="q10_b"> عز الدين الشكيلي</label>
+                         <input type="radio" name="q10" value="أحمد فريد عزيز" id="q10_c"><label for="q10_c"> أحمد فريد عزيز</label>
+                     </div>
+                </div>
+
+                <button type="submit" class="btn">إرسال الإجابات <i class="fas fa-paper-plane"></i></button>
+            </form>
+            <div class="result" id="quizResult" style="display: none;"></div>
+        </div>
+    </section>
+
+    <section id="resultSection" style="display: none;">
+         <div class="container">
+             <h2><i class="fas fa-trophy icon-title"></i> نتيجتك في الاختبار</h2>
+             <div class="result" id="finalResult"></div>
+             <p style="margin-top: 20px;">شكراً لمشاركتك في اختبار عشاق الوداد!</p>
+             <a href="#quiz" class="btn btn-secondary">إعادة الاختبار</a>
+             <a href="#home" class="btn">العودة للرئيسية</a>
+         </div>
+    </section>
+
+    <section id="contact" style="display: none;">
+        <div class="container">
+            <h2><i class="fas fa-address-book icon-title"></i> معلومات الاتصال</h2>
+            <div class="contact-info">
+                <div class="contact-item">
+                    <i class="fab fa-facebook"></i> صفحة الوداد الرسمية: <a href="https://www.facebook.com/share/14syB3KP9C/" target="_blank">Facebook</a>
+                </div>
+                 <div class="contact-item">
+                    <i class="fab fa-facebook"></i> صفحة صاحب الموقع: <a href="https://www.facebook.com/share/1AUa6ZP8ae/" target="_blank">Facebook</a>
+                </div>
+                <div class="contact-item">
+                    <i class="fas fa-phone"></i> رقم الهاتف: <a href="tel:+212641491003">+212 641-491003</a>
+                </div>
+                <div class="contact-item">
+                    <i class="fab fa-whatsapp"></i> واتساب: <a href="https://wa.me/212641491003" target="_blank">+212 641-491003</a>
+                </div>
+            </div>
+             <a href="#home" class="btn" style="margin-top: 30px;">العودة للرئيسية</a>
+        </div>
+    </section>
+
+
+    <footer>
+        <p>&copy; 2025 موقع عشاق الوداد. جميع الحقوق محفوظة.<
+    </footer>
+
+    <script>
+        // JavaScript لتحسين التفاعل والتنقل
+
+        // إظهار قسم محدد وإخفاء باقي الأقسام
+        function showSection(id) {
+            // إخفاء جميع الأقسام أولاً
+            document.querySelectorAll('section').forEach(section => {
+                section.style.display = 'none';
+            });
+            // إظهار القسم المطلوب باستخدام flex للتوسيط
+            const targetSection = document.getElementById(id);
+            if (targetSection) {
+                targetSection.style.display = 'flex';
+            }
+        }
+
+        // عند تحميل الصفحة، تحقق من الرابط في العنوان (#) لإظهار القسم المناسب
+        const hash = window.location.hash;
+        if (hash && document.querySelector(hash)) {
+            showSection(hash.substring(1));
+        } else {
+            showSection('home'); // إظهار قسم الرئيسية افتراضياً إذا لم يكن هناك رابط في العنوان
+        }
+
+        // إضافة مستمعي الأحداث لروابط شريط التنقل للتنقل بين الأقسام
+        document.querySelectorAll('nav a').forEach(link => {
+            link.addEventListener('click', function(e) {
+                e.preventDefault(); // منع السلوك الافتراضي للرابط
+                const targetId = this.getAttribute('href').substring(1); // الحصول على معرف القسم الهدف
+                showSection(targetId); // إظهار القسم الهدف
+                 // التمرير السلس إلى القسم
+                document.getElementById(targetId).scrollIntoView({
+                    behavior: 'smooth'
+                });
+            });
+        });
+
+        // عند إرسال نموذج التسجيل، انتقل إلى قسم الاختبار
+        document.getElementById('registerForm').addEventListener('submit', function(e) {
+            e.preventDefault(); // منع السلوك الافتراضي للنموذج
+            // هنا يمكنك جمع بيانات النموذج (الاسم، النسب، إلخ) وإرسالها إلى الخادم لاحقاً إذا لزم الأمر
+            // console.log("بيانات المستخدم:", {
+            //     name: document.getElementById('name').value,
+            //     family: document.getElementById('family').value,
+            //     birthyear: document.getElementById('birthyear').value,
+            //     supportyear: document.getElementById('supportyear').value,
+            // });
+
+            // انتقل إلى قسم الاختبار
+            showSection('quiz');
+            // التمرير السلس إلى قسم الاختبار
+            document.getElementById('quiz').scrollIntoView({
+                 behavior: 'smooth'
+             });
+        });
+
+        // عند إرسال نموذج الاختبار، احسب النتيجة واعرضها في قسم النتيجة المخصص
+        document.getElementById('quizForm').addEventListener('submit', function(e) {
+            e.preventDefault(); // منع السلوك الافتراضي للنموذج
+            // الإجابات الصحيحة للاختبار
+            const answers = {
+                q1: "1937",
+                q2: "عبد الكريم الجلولي",
+                q3: "عبد الرحيم العسري", // يرجى التحقق من دقة هذه الإجابات التاريخية
+                q4: "1992",
+                q5: "وليد الكرتي",
+                q6: "22", // يرجى تحديث هذا الرقم بناءً على آخر ألقاب الدوري
+                q7: "الحسين عموتة",
+                q8: "الوينرز",
+                q9: "الدار البيضاء",
+                q10: "عبد اللطيف جرو" // يرجى التحقق من دقة هذه الإجابات التاريخية
+            };
+            let score = 0; // متغير لتخزين النتيجة
+            const quizForm = document.getElementById('quizForm');
+
+            // حساب النتيجة عن طريق مقارنة إجابات المستخدم بالإجابات الصحيحة
+            for (let i = 1; i <= 10; i++) {
+                const selected = quizForm.querySelector(`input[name="q${i}"]:checked`);
+                if (selected && selected.value === answers[`q${i}`]) {
+                    score++; // زيادة النتيجة إذا كانت الإجابة صحيحة
+                }
+            }
+
+            // إخفاء قسم الاختبار
+            document.getElementById('quiz').style.display = 'none';
+
+            // إظهار قسم عرض النتيجة النهائية
+            const resultSection = document.getElementById('resultSection');
+            resultSection.style.display = 'flex'; // استخدام flex للتوسيط
+
+            // تحديث محتوى عنصر عرض النتيجة النهائية بالنتيجة المحسوبة
+            const finalResultDiv = document.getElementById('finalResult');
+            finalResultDiv.innerHTML = `نتيجتك النهائية: ${score} من 10 <i class="fas fa-star"></i>`; // عرض النتيجة مع أيقونة
+
+            // التمرير السلس إلى قسم النتيجة
+            resultSection.scrollIntoView({
+                 behavior: 'smooth'
+            });
+        });
+
+        // إضافة مستمعي الأحداث لروابط الأزرار في قسم النتيجة للعودة أو إعادة الاختبار
+         document.querySelectorAll('#resultSection .btn').forEach(link => {
+             link.addEventListener('click', function(e) {
+                 e.preventDefault(); // منع السلوك الافتراضي للرابط
+                 const targetId = this.getAttribute('href').substring(1); // الحصول على معرف القسم الهدف
+                 showSection(targetId); // إظهار القسم الهدف
+                 // التمرير السلس إلى القسم
+                 document.getElementById(targetId).scrollIntoView({
+                      behavior: 'smooth'
+                  });
+             });
+         });
+
+         // إضافة مستمعي الأحداث لروابط الأزرار في قسم الاتصال للعودة للرئيسية
+          document.querySelectorAll('#contact .btn').forEach(link => {
+              link.addEventListener('click', function(e) {
+                  e.preventDefault(); // منع السلوك الافتراضي للرابط
+                  const targetId = this.getAttribute('href').substring(1); // الحصول على معرف القسم الهدف
+                  showSection(targetId); // إظهار القسم الهدف
+                  // التمرير السلس إلى القسم
+                  document.getElementById(targetId).scrollIntoView({
+                       behavior: 'smooth'
+                   });
+              });
+          });
+
+
+    </script>
+
+</body>
+</html>
+                                                            
